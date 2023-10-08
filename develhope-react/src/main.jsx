@@ -6,6 +6,7 @@ import Hello from './Hello.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Hello/>
+    <App/>
+    {/* <Hello/> */}
   </React.StrictMode>,
 )
