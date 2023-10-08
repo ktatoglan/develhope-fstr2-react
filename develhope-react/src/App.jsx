@@ -4,7 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const hello = "Hello";
+
+  const sayHello = (name) => {
+    return <h1>Hello, {name}!</h1>;
+  };
 
   return (
     <>
@@ -16,7 +19,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>{hello}, World!</h1>
+      <h1>{sayHello("Kazim")}</h1>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
