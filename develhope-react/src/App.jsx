@@ -19,7 +19,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>{sayHello("Kazim")}</h1>
+      <h1>{sayHello()}</h1>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
