@@ -19,7 +19,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>{sayHello()}</h1>
+      <h1>{sayHello("Kazim")}</h1>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
@@ -28,3 +28,17 @@ function App() {
 }
 
 export default App
+
+
+/* 
+03 - JSX
+What happens if the name variable is not passed to the function?
+
+- It works but only return "Hello, !".
+
+
+04 - JSX
+What happens if the name variable contains a JSX expression instead of a string?
+
+- If the name variable contains a JSX expression instead of a string, React will render the JSX expression.
+*/
