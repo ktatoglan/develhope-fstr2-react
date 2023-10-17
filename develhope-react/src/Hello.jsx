@@ -1,10 +1,11 @@
 import React from 'react'
+import Message from './Message'
 
 function Hello() {
   return (
     <>
       <h2>Hello World!</h2>
-      <p>What a beautiful day!</p>
+      <Message/>
     </>
   )
 }
