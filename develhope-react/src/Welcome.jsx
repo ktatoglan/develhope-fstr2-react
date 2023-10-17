@@ -1,7 +1,12 @@
 import React from 'react';
 
-function Welcome({ name }) {
-  return <p>Welcome, {name}!</p>;
+function Welcome({ name,age }) {
+  return (
+    <>
+        <p>Welcome, {name}!</p>
+        <p>Your age is {age}.</p>
+    </>
+  );
 }
 
 export default Welcome;
