@@ -4,7 +4,6 @@ import "./App.css";
 function App() {
   const [counter, setCounter] = useState(0);
 
-  // Function to increment the counter when the button is clicked
   const incrementCounter = () => {
     setCounter(counter + 1);
   };
