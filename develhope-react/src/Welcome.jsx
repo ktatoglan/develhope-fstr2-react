@@ -2,10 +2,12 @@ import React from "react";
 import Age from "./Age";
 
 function Welcome({ name, age }) {
+  const isJohn = name === 'John';
+  const isAgeValid = age > 18 && age < 65;
   return (
     <div>
       <p>Welcome, {name}!</p>
-      {age > 18 && age < 65 && <Age age={age} />}
+      {isJohn && isAgeValid && <Age age={age} />}
     </div>
   );
 }
