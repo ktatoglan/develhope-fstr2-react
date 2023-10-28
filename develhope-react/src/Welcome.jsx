@@ -1,12 +1,12 @@
-import React from 'react';
-import Age from './Age';
+import React from "react";
+import Age from "./Age";
 
-function Welcome({ name,age }) {
+function Welcome({ name, age }) {
   return (
-    <>
-        <p>Welcome, {name}!</p>
-        <Age age={age} />
-    </>
+    <div>
+      <p>Welcome, {name}!</p>
+      {age > 18 && <Age age={age} />}
+    </div>
   );
 }
 
