@@ -1,14 +1,9 @@
 import React from "react";
 
-function AlertClock() {
-  const showCurrentTime = () => {
-    const currentTime = new Date().toLocaleTimeString();
-    alert(`Current time is: ${currentTime}`);
-  };
-
+function AlertClock({ onShowTime }) {
   return (
     <div>
-      <button onClick={showCurrentTime}>Show Current Time</button>
+      <button onClick={ onShowTime }>Show Current Time</button>
     </div>
   );
 }
