@@ -5,7 +5,7 @@ function Welcome({ name, age }) {
   return (
     <div>
       <p>Welcome, {name}!</p>
-      {age !== null && age !== undefined && <Age age={age} />}
+      {age > 18 && age < 65 && <Age age={age} />}
     </div>
   );
 }
