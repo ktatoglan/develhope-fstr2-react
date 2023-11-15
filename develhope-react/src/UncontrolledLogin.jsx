@@ -1,40 +1,29 @@
-import React, { useRef } from 'react';
+import React from "react";
 
-const UncontrolledLogin = ({ onLogin }) => {
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
-  const rememberMeRef = useRef(null);
-
+const UncontrolledForm = ({ onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const usernameValue = formData.get('username');
-    const passwordValue = formData.get('password');
-    const rememberMeValue = formData.get('rememberMe');
-
-    onLogin({ username: usernameValue, password: passwordValue, rememberMe: rememberMeValue });
+    for (const [name, value] of formData.entries()) {
+      console.log(`${name}: ${value}`);
+    }
+    onSubmit(formData);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username:</label>
-        <input type="text" id="username" ref={usernameRef} />
+        <input type="text" id="username" name="username" />
       </div>
       <div>
         <label htmlFor="password">Password:</label>
-        <input type="password" id="password" ref={passwordRef} />
+        <input type="password" id="password" name="password" />
       </div>
-      <div>
-        <label htmlFor="rememberMe">
-          <input type="checkbox" id="rememberMe" ref={rememberMeRef} />
-          Remember Me
-        </label>
-      </div>
-      <button type="submit">Login</button>
+      <button type="submit">Submit</button>
     </form>
   );
 };
 
-export default UncontrolledLogin;
+export default UncontrolledForm;
