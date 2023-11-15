@@ -7,52 +7,32 @@ const UncontrolledLogin = ({ onLogin }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
-    const rememberMe = rememberMeRef.current.checked;
-    onLogin({ username, password, rememberMe });
-  };
 
-  const handleReset = () => {
-    usernameRef.current.value = '';
-    passwordRef.current.value = '';
-    rememberMeRef.current.checked = false;
+    const formData = new FormData(event.target);
+    const usernameValue = formData.get('username');
+    const passwordValue = formData.get('password');
+    const rememberMeValue = formData.get('rememberMe');
+
+    onLogin({ username: usernameValue, password: passwordValue, rememberMe: rememberMeValue });
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          ref={usernameRef}
-        />
+        <input type="text" id="username" ref={usernameRef} />
       </div>
       <div>
         <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          ref={passwordRef}
-        />
+        <input type="password" id="password" ref={passwordRef} />
       </div>
       <div>
         <label htmlFor="rememberMe">
-          <input
-            type="checkbox"
-            id="rememberMe"
-            ref={rememberMeRef}
-          />
+          <input type="checkbox" id="rememberMe" ref={rememberMeRef} />
           Remember Me
         </label>
       </div>
-      <button type="submit">
-        Login
-      </button>
-      <button type="button" onClick={handleReset}>
-        Reset
-      </button>
+      <button type="submit">Login</button>
     </form>
   );
 };
