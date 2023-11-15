@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const TodoList = () => {
   const [items, setItems] = useState([]);
-  const [newItem, setNewItem] = useState('');
+  const [newItem, setNewItem] = useState("");
 
   const addItem = () => {
-    if (newItem.trim() !== '') {
+    if (newItem.trim() !== "") {
       setItems([...items, newItem]);
-      setNewItem(''); // Clear the input field after adding item
+      setNewItem("");
     }
   };
 
   const resetItems = () => {
-    setItems([]); // Clear the items array
+    setItems([]);
+  };
+
+  const removeItem = (indexToRemove) => {
+    const updatedItems = items.filter((item, index) => index !== indexToRemove);
+    setItems(updatedItems);
   };
 
   return (
@@ -28,7 +33,10 @@ const TodoList = () => {
       <button onClick={resetItems}>Reset</button>
       <ul>
         {items.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index}>
+            {item}
+            <button onClick={() => removeItem(index)}>Remove</button>
+          </li>
         ))}
       </ul>
     </div>
