@@ -1,38 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
-const Counter = ({ initialValue }) => {
-  const [counter, setCounter] = useState(initialValue);
-  const directionRef = useRef(null);
+const Counter = () => {
+  const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    if (counter > initialValue) {
-      directionRef.current = 'up';
-    } else if (counter < initialValue) {
-      directionRef.current = 'down';
-    }
-  }, [counter, initialValue]);
-
-  const prevDirectionRef = useRef(null);
-  useEffect(() => {
-    if (directionRef.current !== prevDirectionRef.current) {
-      console.log('Direction changed:', directionRef.current);
-      prevDirectionRef.current = directionRef.current;
-    }
-  }, [directionRef.current]);
-
-  const handleIncrement = () => {
-    setCounter((prevCounter) => prevCounter + 1);
+  const increment = () => {
+    setCount(count + 1);
   };
 
-  const handleDecrement = () => {
-    setCounter((prevCounter) => prevCounter - 1);
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  const counterStyle = {
+    fontSize: '24px', 
+    fontWeight: 'bold', 
+    backgroundColor: '#f04423', 
+    padding: '8px',
+    borderRadius: '4px', 
   };
 
   return (
     <div>
-      <h2>Counter: {counter}</h2>
-      <button onClick={handleIncrement}>Increment</button>
-      <button onClick={handleDecrement}>Decrement</button>
+      <h2>Counter</h2>
+      <div style={counterStyle}>{count}</div>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
     </div>
   );
 };
