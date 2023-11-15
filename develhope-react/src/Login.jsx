@@ -19,8 +19,6 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Process login logic here using 'username', 'password', and 'rememberMe'
-    // For example: Send login request to server or perform client-side validation
     console.log('Submitted:', { username, password, rememberMe });
   };
 
