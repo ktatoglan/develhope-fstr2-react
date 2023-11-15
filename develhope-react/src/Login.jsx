@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const Login = ({ onLogin }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleUsernameChange = (event) => {
@@ -19,10 +19,10 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Process login logic here using 'username', 'password', and 'rememberMe'
-    // For example: Send login request to server or perform client-side validation
-    console.log('Submitted:', { username, password, rememberMe });
+    onLogin({ username, password, rememberMe });
   };
+
+  const isDisabled = !username || !password;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -55,7 +55,9 @@ const Login = () => {
           Remember Me
         </label>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" disabled={isDisabled}>
+        Login
+      </button>
     </form>
   );
 };
