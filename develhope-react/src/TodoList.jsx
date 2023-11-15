@@ -11,6 +11,10 @@ const TodoList = () => {
     }
   };
 
+  const resetItems = () => {
+    setItems([]); // Clear the items array
+  };
+
   return (
     <div>
       <h1>Todo List</h1>
@@ -21,6 +25,7 @@ const TodoList = () => {
         placeholder="Add a new item"
       />
       <button onClick={addItem}>Add</button>
+      <button onClick={resetItems}>Reset</button>
       <ul>
         {items.map((item, index) => (
           <li key={index}>{item}</li>
