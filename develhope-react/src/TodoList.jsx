@@ -7,7 +7,7 @@ const TodoList = () => {
   const addItem = () => {
     if (newItem.trim() !== '') {
       setItems([...items, newItem]);
-      setNewItem('');
+      setNewItem(''); // Clear the input field after adding item
     }
   };
 
