@@ -1,73 +1,43 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Login = ({ onLogin }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  
+  const handleLogin = () => {
+    onLogin({ username, password });
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const buttonStyle = {
+    backgroundColor: password.length < 8 ? 'red' : 'green',
+    color: 'white',
+    padding: '8px 16px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    marginTop: '10px',
   };
-
-  const handleRememberMeChange = (event) => {
-    setRememberMe(event.target.checked);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onLogin({ username, password, rememberMe });
-  };
-
-  const handleReset = () => {
-    setUsername("");
-    setPassword("");
-    setRememberMe(false);
-  };
-
-  const isDisabled = !username || !password;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="rememberMe">
-          <input
-            type="checkbox"
-            id="rememberMe"
-            checked={rememberMe}
-            onChange={handleRememberMeChange}
-          />
-          Remember Me
-        </label>
-      </div>
-      <button type="submit" disabled={isDisabled}>
+    <div>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <br />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <br />
+      <button style={buttonStyle} onClick={handleLogin}>
         Login
       </button>
-      <button type="button" onClick={handleReset}>
-        Reset
-      </button>
-    </form>
+    </div>
   );
 };
 
