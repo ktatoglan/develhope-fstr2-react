@@ -22,6 +22,12 @@ const Login = ({ onLogin }) => {
     onLogin({ username, password, rememberMe });
   };
 
+  const handleReset = () => {
+    setUsername("");
+    setPassword("");
+    setRememberMe(false);
+  };
+
   const isDisabled = !username || !password;
 
   return (
@@ -57,6 +63,9 @@ const Login = ({ onLogin }) => {
       </div>
       <button type="submit" disabled={isDisabled}>
         Login
+      </button>
+      <button type="button" onClick={handleReset}>
+        Reset
       </button>
     </form>
   );
