@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LanguageContext, Clock } from './Clock'; // Adjust the path as needed
+import { LanguageContext, Clock } from './Clock'; 
 
 const App = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('tr-TR');
