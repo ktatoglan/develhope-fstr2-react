@@ -1,50 +1,44 @@
 import React, { useState, useEffect } from "react";
-import GithubUser from "./GithubUser";
+import { Link } from "react-router-dom";
+
 const GithubUsers = () => {
-  const [usernames, setUsernames] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchUsernames = async () => {
-      try {
-        const response = await fetch("https://api.github.com/users");
-        if (response.ok) {
-          const data = await response.json();
-          const names = data.map((user) => user.login);
-          setUsernames(names);
-        } else {
-          throw new Error("Failed to fetch users");
-        }
-      } catch (error) {
-        console.error("Error fetching usernames:", error);
-      }
-    };
-
-    fetchUsernames();
+    setIsLoading(true);
+    fetch("https://api.github.com/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+        setIsLoading(false);
+      });
   }, []);
 
-  const handleUserClick = (username) => {
-    setSelectedUser(username);
+  const renderUsers = () => {
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <Link to={`/users/${user.login}`}>{user.login}</Link>
+          </li>
+        ))}
+      </ul>
+    );
   };
 
   return (
     <div>
-      <h1>Github Users</h1>
-      <div>
-        <h2>Usernames</h2>
-        <ul>
-          {usernames.map((username, index) => (
-            <li
-              key={index}
-              onClick={() => handleUserClick(username)}
-              style={{ cursor: "pointer" }}
-            >
-              {username}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>{selectedUser && <GithubUser username={selectedUser} />}</div>
+      <h2>Github Users</h2>
+      {renderUsers()}
     </div>
   );
 };
