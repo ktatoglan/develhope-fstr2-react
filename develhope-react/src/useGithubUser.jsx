@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import useSWR from 'swr';
 
 const useGithubUser = (username) => {
@@ -11,8 +9,10 @@ const useGithubUser = (username) => {
     return response.json();
   };
 
+  const shouldFetch = username !== null && username !== undefined && username !== '';
+
   const { data: userData, error, isValidating: isLoading } = useSWR(
-    username ? `https://api.github.com/users/${username}` : null,
+    shouldFetch ? `https://api.github.com/users/${username}` : null,
     fetcher
   );
 
@@ -24,4 +24,3 @@ const useGithubUser = (username) => {
 };
 
 export default useGithubUser;
-
