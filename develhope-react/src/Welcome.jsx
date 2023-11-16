@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Welcome = ({ className }) => {
+const Welcome = ({ name }) => {
   return (
-    <div className={`welcome ${className}`}>
-      <h1>Welcome!</h1>
-      <p>This is the Welcome component.</p>
+    <div>
+      <h1>Welcome, {name}!</h1>
     </div>
   );
 };

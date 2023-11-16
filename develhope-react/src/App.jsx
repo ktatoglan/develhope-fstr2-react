@@ -1,14 +1,13 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Welcome from './Welcome';
 
-import './App.css'
-import './index.css'
-import Welcome from './Welcome'
-
-function App() {
+const App = () => {
   return (
-    <div>
-    <Welcome className="welcome" />
-  </div>
-  )
-}
+    <Routes>
+      <Route path="/" element={<Welcome name="Kazim" />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;
