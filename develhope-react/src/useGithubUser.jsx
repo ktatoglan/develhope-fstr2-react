@@ -11,15 +11,20 @@ const useGithubUser = (username) => {
 
   const shouldFetch = username !== null && username !== undefined && username !== '';
 
-  const { data: userData, error, isValidating: isLoading } = useSWR(
+  const { data: userData, error, isValidating: isLoading, mutate } = useSWR(
     shouldFetch ? `https://api.github.com/users/${username}` : null,
     fetcher
   );
+
+  const refetchUserData = async () => {
+    await mutate();
+  };
 
   return {
     userData,
     isLoading: !userData && !error,
     error,
+    refetchUserData,
   };
 };
 
