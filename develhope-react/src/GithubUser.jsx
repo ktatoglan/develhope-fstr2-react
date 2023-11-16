@@ -1,6 +1,5 @@
 import React from 'react';
-import useGithubUser from './useGithubUser'; // Adjust the path as needed
-
+import useGithubUser from './useGithubUser'; 
 const GithubUser = ({ username }) => {
   const { userData, isLoading, error } = useGithubUser(username);
 
