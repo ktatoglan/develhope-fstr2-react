@@ -15,7 +15,6 @@ const App = () => {
       <select id="languageSelect" onChange={handleLanguageChange} value={selectedLanguage}>
         <option value="tr-TR">Turkish</option>
         <option value="en-US">English</option>
-        <option value="es-ES">Spanish</option>
       </select>
 
       <LanguageContext.Provider value={{ language: selectedLanguage }}>

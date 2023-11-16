@@ -1,13 +1,12 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const LanguageContext = createContext();
-
 const Clock = () => {
   const { language } = useContext(LanguageContext);
   const [time, setTime] = useState(new Date());
 
   // Function to update time every second
-  useState(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setTime(new Date());
     }, 1000);
@@ -15,11 +14,19 @@ const Clock = () => {
   }, []);
 
   const formattedTime =
-    language === 'en-US'
-      ? time.toLocaleTimeString('tr-TR')
-      : time.toLocaleTimeString('en-US');
+    language === "tr-TR"
+      ? time.toLocaleTimeString("tr-TR")
+      : time.toLocaleTimeString("en-US");
 
-  return <div>Current Time: {formattedTime}</div>;
+  const currentTimeMessage = language === "tr-TR" ? "Saat: " : "Current Time:";
+
+  return (
+    <div>
+      <p>
+        {currentTimeMessage} {formattedTime}
+      </p>
+    </div>
+  );
 };
 
 export { LanguageContext, Clock };
