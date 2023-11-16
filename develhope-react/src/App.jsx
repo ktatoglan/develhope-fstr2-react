@@ -7,8 +7,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/users" component={GithubUsers} />
-        <Route path="/users/:username" component={ShowGithubUser} />
+        <Route path="/users" element={<GithubUsers />} />
+        <Route path="/users/:username" element={<ShowGithubUser />} />
       </Routes>
     </Router>
   );
